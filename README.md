@@ -62,13 +62,13 @@ sudo ./update_ip_debian.sh <New IP> <Sleep interval>
 ---
 
 ### Working Examples:
-> <img width="968" height="280" alt="image" src="https://github.com/user-attachments/assets/a71893c0-f463-4e4c-ab7f-42608a274279" />
+<img width="968" height="280" alt="1" src="https://github.com/user-attachments/assets/e6100093-2037-4627-a3b6-d26fd158d9c4" />
 
 If there's one IP, that IP will be selected by default:
-> <img width="756" height="227" alt="image" src="https://github.com/user-attachments/assets/b2c3d8ce-1dcc-4e20-843f-75a19b9929c0" />
+<img width="756" height="227" alt="2" src="https://github.com/user-attachments/assets/6e59648a-b86a-48e6-a79a-5a6320f45f02" />
 
 Otherwise, you have to select the IP you want to change:
-> <img width="910" height="309" alt="image" src="https://github.com/user-attachments/assets/70af9eb8-b445-484e-a95f-0fdbe73c6334" />
+<img width="910" height="309" alt="3" src="https://github.com/user-attachments/assets/735d4687-1163-4adf-85b9-40e8fe2854ed" />
 
 Copy the command:
 ```bash
@@ -79,7 +79,7 @@ ps -f -C bash | grep 'sleep 500' | awk '{print $2}' | sudo xargs kill -9
 
 ##### Netplan on the ubuntu server will show some errors and warnings, these are expected:
 
-> <img width="1154" height="424" alt="image" src="https://github.com/user-attachments/assets/363975a5-4582-4c71-8386-874c405f105a" />
+<img width="1154" height="424" alt="4" src="https://github.com/user-attachments/assets/a4a835b0-9cee-4bac-820d-c824a09af1f0" />
 
 This shows that the command being run, kills the process that will revert the ip, killing the process will not result in the IP being reverted.
-> <img width="1471" height="750" alt="image" src="https://github.com/user-attachments/assets/1eb406fe-c5cc-46fb-ae7a-e317df482d3a" />
+<img width="1471" height="750" alt="5" src="https://github.com/user-attachments/assets/afe8a02c-83ea-4d28-b9f9-488a3893da66" />
