@@ -86,14 +86,47 @@ A script refuses to start while a revert from an earlier run is still pending, s
 
 ---
 
-## Working examples
-<img width="968" height="280" alt="1" src="https://github.com/user-attachments/assets/e6100093-2037-4627-a3b6-d26fd158d9c4" />
+## Example runs
 
-If there's one IP, that IP will be selected by default:
-<img width="756" height="227" alt="2" src="https://github.com/user-attachments/assets/6e59648a-b86a-48e6-a79a-5a6320f45f02" />
+Output from the Ubuntu script, run in a test environment. The Debian script prints the same, with `/etc/network/interfaces` as the file.
 
-Otherwise, you have to select the IP you want to change:
-<img width="910" height="309" alt="3" src="https://github.com/user-attachments/assets/735d4687-1163-4adf-85b9-40e8fe2854ed" />
+If there's one IP, that IP is selected by default:
+
+```console
+$ sudo ./ip_swap_ubuntu.sh /etc/netplan/01-netcfg.yaml 192.168.1.120 300
+Only one IP detected: 192.168.1.20
+Are you sure you want to replace 192.168.1.20 with 192.168.1.120? (y/n): y
+
+About to replace 192.168.1.20 with 192.168.1.120 in /etc/netplan/01-netcfg.yaml.
+It reverts on its own after 300 seconds. To keep the change, reconnect on 192.168.1.120 and run:
+
+    sudo kill $(cat /run/ip_swap_revert.pid)
+
+Press Enter to proceed, or Ctrl+C to abort...
+Swapping 192.168.1.20 -> 192.168.1.120 in /etc/netplan/01-netcfg.yaml (backup: /root/ip_swap/01-netcfg.yaml.20261002-154150.bak)
+Automatic revert armed for 300 seconds (PID 4928)
+Health check passed: 192.168.1.120 is up and the gateway 192.168.1.1 answers
+IP swap applied: 192.168.1.20 -> 192.168.1.120
+Reverts automatically in 300 seconds unless you keep the change:
+
+    sudo kill $(cat /run/ip_swap_revert.pid)
+
+Log: /root/ip_swap/ip_swap.log
+```
+
+Otherwise, you pick the IP you want to change:
+
+```console
+$ sudo ./ip_swap_ubuntu.sh /etc/netplan/01-netcfg.yaml 192.168.1.121 300
+Available IP addresses on this machine:
+1) 192.168.1.20
+2) 192.168.1.21
+#? 2
+You selected: 192.168.1.21
+Are you sure you want to replace 192.168.1.21 with 192.168.1.121? (y/n): y
+
+About to replace 192.168.1.21 with 192.168.1.121 in /etc/netplan/01-netcfg.yaml.
+```
 
 ##### Netplan on the Ubuntu server may show some errors and warnings; these are expected:
 
